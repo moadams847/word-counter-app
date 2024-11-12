@@ -19,7 +19,7 @@ def main():
         # Read and display the content of the uploaded file
         content = uploaded_file.read().decode("utf-8")
         st.subheader("File Content Preview")
-        st.text(content[:1000])  # Display a preview of the first 1000 characters
+        st.text(content[:500])  # Display a preview of the first 500 characters
 
         # Process the text: remove punctuation and convert to lowercase
         processed_text = re.sub(r'[^\w\s]', '', content).lower()
