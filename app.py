@@ -2,65 +2,37 @@ import streamlit as st
 import pandas as pd
 import re
 from collections import Counter
-from io import BytesIO
 
-# Streamlit App
-def main():
-    st.title("Text File Word Count Analyzer")
-    st.write(
-        "This app allows you to upload a text file, "
-        "counts the word frequencies, and provides an option to download the results."
-    )
-    
-    # File uploader widget
-    uploaded_file = st.file_uploader("Upload a .txt file", type=["txt"])
+# Streamlit app
+st.title("Speech Word Counter")
 
-    if uploaded_file is not None:
-        # Read and display the content of the uploaded file
-        content = uploaded_file.read().decode("utf-8")
-        st.subheader("File Content Preview")
-        st.text(content[:500])  # Display a preview of the first 500 characters
+# User input text box
+user_input = st.text_area("Paste your text here")
 
-        # Process the text: remove punctuation and convert to lowercase
-        processed_text = re.sub(r'[^\w\s]', '', content).lower()
+if user_input:
+    # Preprocess the input text (remove punctuation, convert to lowercase)
+    processed_text = re.sub(r'[^\w\s]', '', user_input).lower()
 
-        # Tokenize the text into words and count their frequency
-        tokenized_words = processed_text.split()
-        word_counts = Counter(tokenized_words)
+    # Tokenize the input text into words
+    tokenized_words = processed_text.split()
 
-        # Convert counts to a DataFrame
-        speech_df = pd.DataFrame.from_dict(word_counts, orient='index', columns=['Count']).reset_index()
-        speech_df.columns = ['Word', 'Count']
-        speech_df = speech_df.sort_values(by='Count', ascending=False).reset_index(drop=True)
+    # Count the frequency of words in the input text
+    word_counts = Counter(tokenized_words)
 
-        # Display the DataFrame
-        st.subheader("Word Count Results")
-        st.dataframe(speech_df)
-        
-        # Convert DataFrame to CSV
-        csv = speech_df.to_csv(index=False).encode('utf-8')
+    # Convert counts to a DataFrame
+    speech_df = pd.DataFrame.from_dict(word_counts, orient='index', columns=['Count']).reset_index()
+    speech_df.columns = ['Word', 'Count']
 
-        # # Provide an option to download the results as an Excel file
-        # if st.button("Download as Excel"):
-        #     # Convert DataFrame to Excel
-        #     towrite = BytesIO()
-        #     with pd.ExcelWriter(towrite, engine='xlsxwriter') as writer:
-        #         speech_df.to_excel(writer, index=False, sheet_name="Word Counts")
-        #     towrite.seek(0)
-        #     st.download_button(
-        #         label="Download Excel file",
-        #         data=towrite,
-        #         file_name="speech_word_counts.xlsx",
-        #         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        #     )
-        
-        # Provide a download button for the CSV file
-        st.download_button(
-        label="Download excel file",
+    # Display the DataFrame
+    st.write(speech_df)
+
+    # Convert DataFrame to CSV
+    csv = speech_df.to_csv(index=False).encode('utf-8')
+
+    # Provide a download button for the CSV file
+    st.download_button(
+        label="Download as CSV",
         data=csv,
         file_name="speech_word_counts.csv",
         mime="text/csv"
     )
-
-if __name__ == "__main__":
-    main()
