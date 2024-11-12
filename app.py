@@ -6,6 +6,8 @@ from collections import Counter
 # Streamlit app
 st.title("Speech Word Counter")
 
+st.write("A text processing tool for Take-home assignment 3.")
+
 # User input text box
 user_input = st.text_area("Paste your text here")
 
@@ -40,3 +42,5 @@ if st.button("Submit for processing"):
         )
     else:
         st.warning("Please paste some text to process.")
+
+st.info('For support regarding the tool, contact https://wa.me/qr/VBL77I3GHYG6K1', icon="ℹ️")
