@@ -4,9 +4,9 @@ import re
 from collections import Counter
 
 # Streamlit app
-st.title("Speech Word Counter")
+st.title("Speech (Text) Word Counter")
 
-st.write("A text processing tool for Take-home assignment 3.")
+st.write("A text processing tool to support Take-Home Assignment 3.")
 
 # User input text box
 user_input = st.text_area("Paste your text here")
