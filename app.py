@@ -36,20 +36,31 @@ def main():
         # Display the DataFrame
         st.subheader("Word Count Results")
         st.dataframe(speech_df)
+        
+        # Convert DataFrame to CSV
+        csv = speech_df.to_csv(index=False).encode('utf-8')
 
-        # Provide an option to download the results as an Excel file
-        if st.button("Download as Excel"):
-            # Convert DataFrame to Excel
-            towrite = BytesIO()
-            with pd.ExcelWriter(towrite, engine='xlsxwriter') as writer:
-                speech_df.to_excel(writer, index=False, sheet_name="Word Counts")
-            towrite.seek(0)
-            st.download_button(
-                label="Download Excel file",
-                data=towrite,
-                file_name="speech_word_counts.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
+        # # Provide an option to download the results as an Excel file
+        # if st.button("Download as Excel"):
+        #     # Convert DataFrame to Excel
+        #     towrite = BytesIO()
+        #     with pd.ExcelWriter(towrite, engine='xlsxwriter') as writer:
+        #         speech_df.to_excel(writer, index=False, sheet_name="Word Counts")
+        #     towrite.seek(0)
+        #     st.download_button(
+        #         label="Download Excel file",
+        #         data=towrite,
+        #         file_name="speech_word_counts.xlsx",
+        #         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        #     )
+        
+        # Provide a download button for the CSV file
+        st.download_button(
+        label="Download excel file",
+        data=csv,
+        file_name="speech_word_counts.csv",
+        mime="text/csv"
+    )
 
 if __name__ == "__main__":
     main()
