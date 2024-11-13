@@ -18,7 +18,7 @@ if st.button("Submit for processing"):
 
     if user_input:
         # Preprocess the input text (remove punctuation, numbers, convert to lowercase)
-        processed_text = re.sub(r'[^\w\s]|[\d]', '', user_input).lower()
+        processed_text = re.sub(r'[^\w\s]|[\d]', '', user_input).title()
 
         # Tokenize the input text into words
         tokenized_words = processed_text.split()
