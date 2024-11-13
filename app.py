@@ -17,7 +17,7 @@ if st.button("Submit for processing"):
     st.divider()
 
     if user_input:
-        # Preprocess the input text (remove punctuation, numbers, convert to lowercase)
+        # Preprocess the input text (remove punctuation, and numbers, convert to lowercase)
         processed_text = re.sub(r'[^\w\s]|[\d]', '', user_input).title()
 
         # Tokenize the input text into words
@@ -28,7 +28,7 @@ if st.button("Submit for processing"):
 
         # Convert counts to a DataFrame
         speech_df = pd.DataFrame.from_dict(word_counts, orient='index', columns=['Occurence']).reset_index()
-        speech_df.columns = ['Word', 'Occurence']
+        speech_df.columns = ['Word', 'Occurrence']
 
         # Display the DataFrame
         st.write(speech_df)
