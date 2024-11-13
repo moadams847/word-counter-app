@@ -6,7 +6,7 @@ import re
 # Streamlit app
 st.title("Speech (Text) Word Counter")
 
-st.write("A text processing tool to help with Take-Home Assignment 3.")
+st.write("A text processing tool to help with Take-Home Assignment 3 for statistics.")
 
 # User input text box
 user_input = st.text_area("Paste your text here")
