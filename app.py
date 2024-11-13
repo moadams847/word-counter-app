@@ -1,7 +1,7 @@
+from collections import Counter
 import streamlit as st
 import pandas as pd
 import re
-from collections import Counter
 
 # Streamlit app
 st.title("Speech (Text) Word Counter")
