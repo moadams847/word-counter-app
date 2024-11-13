@@ -24,8 +24,8 @@ if st.button("Submit for processing"):
         word_counts = Counter(tokenized_words)
 
         # Convert counts to a DataFrame
-        speech_df = pd.DataFrame.from_dict(word_counts, orient='index', columns=['Count']).reset_index()
-        speech_df.columns = ['Word', 'Count']
+        speech_df = pd.DataFrame.from_dict(word_counts, orient='index', columns=['Occurence']).reset_index()
+        speech_df.columns = ['Word', 'Occurence']
 
         # Display the DataFrame
         st.write(speech_df)
