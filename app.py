@@ -32,7 +32,7 @@ if st.button("Submit for processing"):
 
         # Display the DataFrame
 
-        st.success("Your excel file is ready! 🎉, Scroll down to download it")
+        st.success("Your excel file is ready! 🎉, Scroll down to download the file")
 
         
         st.write(speech_df)
