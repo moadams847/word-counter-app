@@ -14,7 +14,7 @@ user_input = st.text_area("Paste your text here")
 # Add a submit button
 if st.button("Submit for processing"):
     
-    st.divider()
+    # st.divider()
 
     if user_input:
         # Preprocess the input text (remove punctuation, and numbers, convert to lowercase)
