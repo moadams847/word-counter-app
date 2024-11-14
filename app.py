@@ -31,6 +31,10 @@ if st.button("Submit for processing"):
         speech_df.columns = ['Word', 'Occurrence']
 
         # Display the DataFrame
+
+        st.write("Scroll downn to download file")
+
+        
         st.write(speech_df)
 
         # Convert DataFrame to CSV
