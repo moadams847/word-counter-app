@@ -32,7 +32,7 @@ if st.button("Submit for processing"):
 
         # Display the DataFrame
 
-        st.write("Scroll down to download processed the document")
+        st.write("Scroll down to download the processed document")
 
         
         st.write(speech_df)
